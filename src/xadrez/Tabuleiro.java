@@ -7,7 +7,7 @@ public class Tabuleiro {
     
   //Construtor
     public Tabuleiro() {
-        tabuleiro = new Peca[8][8];
+        this.tabuleiro = new Peca[8][8];
         
         //Cria Rei
         Peca rei = new Rei(1);
@@ -98,13 +98,9 @@ public class Tabuleiro {
     	return string; 
     }
     
-    public Peca[][] getTabuleiro() {
-    	return tabuleiro;
-    }
-    
     public static void iniciaJogo() {
-    	Peca[][] tab.getTabuleiro();
-    	String tabuleiroString = tabuleiro.toString();
+    	Tabuleiro tab = new Tabuleiro();
+    	String tabuleiroString = tab.toString();
     	System.out.println(tabuleiroString);
     }
 }
