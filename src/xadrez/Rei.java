@@ -8,7 +8,7 @@ public class Rei extends Peca{
 		super(cor);
 	}
     
-	public String representa(int cor) {
+	public String toString() {
 		if(cor == 1) {
 			return "R";
 		}else {
@@ -16,7 +16,12 @@ public class Rei extends Peca{
 		}
 	}
 	
-	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim) {
+/*	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim) {
 		
-	}
+		Peca tab[][] = tab.getTabuleiro();
+		
+		if (tab.tabuleiro[linhaFim][colunaFim] == "-") {
+			
+		}
+	}*/
 }

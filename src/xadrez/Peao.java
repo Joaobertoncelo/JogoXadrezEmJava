@@ -8,7 +8,7 @@ public class Peao extends Peca{
        super(cor);
 	}
 	
-	public String representa(int cor) {
+	public String toString() {
 		if(cor == 1) {
 			return "P";
 		}else {

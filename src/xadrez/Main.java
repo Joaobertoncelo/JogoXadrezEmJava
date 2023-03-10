@@ -6,7 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Tabuleiro.iniciaJogo();
-		Boolean chequeMate = false;
+/*		Boolean chequeMate = false;
 		Boolean branca = true;
 		int colunaIni = 0, linhaIni = 0, colunaFim = 0, linhaFim = 0;
 		int cor = 1;
@@ -68,6 +68,6 @@ public class Main {
 		}while(!chequeMate);
 		
 		
-		
+		*/
 	}
 }

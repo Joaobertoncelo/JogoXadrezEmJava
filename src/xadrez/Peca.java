@@ -1,6 +1,6 @@
 package xadrez;
 
-abstract class Peca{
+public abstract class Peca{
 	int cor;
         
 	//Construtor
@@ -8,7 +8,7 @@ abstract class Peca{
         this.cor = cor;
     }
         
-	public String representa() {
+	public String toString() {
 		return "Peça";
 	}
 	

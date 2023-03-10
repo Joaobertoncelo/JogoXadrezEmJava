@@ -92,10 +92,15 @@ public class Tabuleiro {
     	String string = new String();
     	for(int i=0; i<8;i++) {
     		for(int j=0; j<8;j++) {
-    			string = tabuleiro[i][j].toString(); 
+    			Peca p = tabuleiro[i][j];
+    			System.out.print(p.toString());
     		}
     	}
-    	return string; 
+    	return string;
+    }
+    
+    public Peca[][] getTabuleiro(){
+    	return tabuleiro;
     }
     
     public static void iniciaJogo() {
