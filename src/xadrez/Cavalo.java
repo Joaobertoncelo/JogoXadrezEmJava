@@ -1,6 +1,11 @@
 package xadrez;
 
 public class Cavalo extends Peca{
+	
+	public Cavalo(int cor) {
+		super(cor);
+	}
+	
 	public String representa(int cor) {
 		if(cor == 1) {
 			return "C";
