@@ -2,6 +2,8 @@ package xadrez;
 
 public class Torre extends Peca{
 	
+	
+	//Construtor
 	public Torre(int cor){
 	    super(cor);
 	}

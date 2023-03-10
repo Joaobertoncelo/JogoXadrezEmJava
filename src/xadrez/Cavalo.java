@@ -2,6 +2,8 @@ package xadrez;
 
 public class Cavalo extends Peca{
 	
+	
+	//Construtor
 	public Cavalo(int cor) {
 		super(cor);
 	}

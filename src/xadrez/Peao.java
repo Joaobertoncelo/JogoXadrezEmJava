@@ -2,6 +2,8 @@ package xadrez;
 
 public class Peao extends Peca{
 	
+	
+	//Construtor
 	public Peao(int cor){
        super(cor);
 	}

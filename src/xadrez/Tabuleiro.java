@@ -4,6 +4,8 @@ public class Tabuleiro {
     
     private Peca[][] tabuleiro;
     
+    
+  //Construtor
     public Tabuleiro() {
         tabuleiro = new Peca[8][8];
         
@@ -96,7 +98,12 @@ public class Tabuleiro {
     	return string; 
     }
     
+    public Peca[][] getTabuleiro() {
+    	return tabuleiro;
+    }
+    
     public static void iniciaJogo() {
+    	Peca[][] tab.getTabuleiro();
     	String tabuleiroString = tabuleiro.toString();
     	System.out.println(tabuleiroString);
     }

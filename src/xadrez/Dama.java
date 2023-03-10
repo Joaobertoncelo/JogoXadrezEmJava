@@ -2,6 +2,8 @@ package xadrez;
 
 public class Dama extends Peca{
     
+	
+	//Construtor
     public Dama(int cor){
         super(cor);
     }

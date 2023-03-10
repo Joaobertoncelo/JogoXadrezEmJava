@@ -2,6 +2,8 @@ package xadrez;
 
 public class Bispo extends Peca{
 	
+	
+	//Construtor
 	public Bispo(int cor) {
 		super(cor);
 	}
