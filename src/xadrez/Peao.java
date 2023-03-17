@@ -16,7 +16,7 @@ public class Peao extends Peca{
 		}
 	}
 	
-	public void andar() {
+	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab) {
 		
 	}
 }

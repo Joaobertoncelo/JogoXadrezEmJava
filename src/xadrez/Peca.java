@@ -9,7 +9,11 @@ public abstract class Peca{
     }
         
 	public String toString() {
-		return "Peça";
+		if(cor == 1) {
+			return "Peca";
+		}else {
+			return "peca";
+		}
 	}
 	
     public boolean conferePos(int x,int y){
@@ -20,7 +24,5 @@ public abstract class Peca{
         }
     }
         
-	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim) {
-		
-	}
+	public abstract void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab);
 }

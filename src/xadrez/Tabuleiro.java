@@ -87,25 +87,30 @@ public class Tabuleiro {
         tabuleiro[6][7] = peao;
         
         
+        
     }
     public String toString(){
     	String string = new String();
     	for(int i=0; i<8;i++) {
     		for(int j=0; j<8;j++) {
     			Peca p = tabuleiro[i][j];
-    			System.out.print(p.toString());
+    			if (p != null) {
+    				System.out.print(p.toString() + " ");
+    			}else {
+    				System.out.print("- ");
+    			}
     		}
+    		System.out.println();
     	}
     	return string;
     }
     
-    public Peca[][] getTabuleiro(){
-    	return tabuleiro;
+    public Peca getPeca(int x, int y){
+    	return tabuleiro[x][y];
     }
     
-    public static void iniciaJogo() {
-    	Tabuleiro tab = new Tabuleiro();
-    	String tabuleiroString = tab.toString();
-    	System.out.println(tabuleiroString);
+    public void setPeca(int x, int y, Peca p) {
+    	tabuleiro[x][y] = p;
     }
+    
 }

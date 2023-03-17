@@ -1,8 +1,6 @@
 package xadrez;
 
 public class Rei extends Peca{
-    
-	
 	//Construtor
 	public Rei(int cor){
 		super(cor);
@@ -16,12 +14,17 @@ public class Rei extends Peca{
 		}
 	}
 	
-/*	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim) {
-		
-		Peca tab[][] = tab.getTabuleiro();
-		
-		if (tab.tabuleiro[linhaFim][colunaFim] == "-") {
-			
+	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab) {	
+		Peca pec = tab.getPeca(linhaFim, colunaFim);
+		if (pec == null) {
+			int linha = linhaFim;
+			int coluna = colunaFim;
+			if(Math.abs(linha) <= 1 && Math.abs(coluna) <=1) {
+				tab.setPeca(linhaFim, colunaFim, this);
+				tab.setPeca(linhaIni, colunaIni, null);
+			}else {
+				//Criar classe de excessão
+			}
 		}
-	}*/
+	}
 }
