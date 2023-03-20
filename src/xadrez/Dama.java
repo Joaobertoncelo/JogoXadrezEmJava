@@ -51,9 +51,11 @@ public class Dama extends Peca{
 					}else if(Math.abs(linha) == Math.abs(coluna)) {
 						
 						for(int i=linhaIni; i<linhaFim; i++) {
-							if(tab.getPeca(i, i) != null) {
+							int j = colunaIni;
+							if(tab.getPeca(i, j) != null) {
 								camLivre = false;
 							}
+							j++;
 						}
 						if (camLivre) {
 							tab.setPeca(linhaFim, colunaFim, this);

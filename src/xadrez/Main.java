@@ -21,15 +21,24 @@ public class Main {
 				cor = 2;
 			}
 			//Escanear qual a movimentação do jogador
-			System.out.println("Onde está sua peca? (coluna/linha)");
-			colunaIni = scanner.nextInt(); 
+			System.out.println("Onde está sua peca? (coluna/linha)"); 
 			linhaIni = scanner.nextInt();
+			linhaIni --;
+			colunaIni = scanner.nextInt();
+			colunaIni --;
 			System.out.println("Para onde deseja movimentar? (coluna/linha)");
-			colunaFim = scanner.nextInt(); 
 			linhaFim = scanner.nextInt();
-			p=tab.getPeca(linhaIni, colunaIni);
-			p.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
-			
+			linhaFim --;
+			colunaFim = scanner.nextInt();
+			colunaFim --;
+			try {
+				p=tab.getPeca(linhaIni, colunaIni);
+				p.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
+				System.out.println(tab);
+			}catch(NullPointerException e) {
+				System.out.println(e);
+				System.out.println("A peça não pode ser movimentada aí");
+			}
 			branca = !branca;
 		}while(!chequeMate);
 	}

@@ -33,8 +33,6 @@ public class Torre extends Peca{
 						if (camLivre) {
 							tab.setPeca(linhaFim, colunaFim, this);
 							tab.setPeca(linhaIni, colunaIni, null);
-						}else {
-							//exceção
 						}
 					}else if((Math.abs(linha) != 0 && Math.abs(coluna) == 0)){
 						for(int i=linhaIni; i<linhaFim; i++) {

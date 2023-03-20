@@ -22,19 +22,16 @@ public class Rei extends Peca{
 			if (pec == null) {
 				int linha = linhaFim - linhaIni;
 				int coluna = colunaFim - colunaIni;
-				try {
-					if(Math.abs(linha) <= 1 && Math.abs(coluna) <=1) {
+				if(Math.abs(linha) <= 1 && Math.abs(coluna) <=1) {
+					try {
 						tab.setPeca(linhaFim, colunaFim, this);
 						tab.setPeca(linhaIni, colunaIni, null);
+					}catch(ArrayIndexOutOfBoundsException e){
+						System.out.println(e);
+						System.out.println("A peça não pode ser movimentada nessa casa");
 					}
-				}catch(ArrayIndexOutOfBoundsException e){
-					System.out.println(e);
-					System.out.println("A peça não pode ser movimentada nessa casa");
-				}
-			
-		} else {
-			//exceção
-		}
+				}			
+			}
 		}
 	}
 }

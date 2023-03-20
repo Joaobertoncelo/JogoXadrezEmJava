@@ -1,7 +1,7 @@
 package xadrez;
 
 public class Peao extends Peca{
-	
+	private Boolean primMov = true;
 	
 	//Construtor
 	public Peao(int cor){
@@ -21,25 +21,32 @@ public class Peao extends Peca{
 			Peca pec = tab.getPeca(linhaFim, colunaFim);
 			int linha = linhaFim - linhaIni;
 			int coluna = colunaFim - colunaIni;
-			try {
-				if (pec == null) {
-					if(linha <= 1 && coluna <=1) {
+			if (pec == null) {
+				try {
+					if(Math.abs(linha) == 1 && Math.abs(coluna) == 0) {
 						tab.setPeca(linhaFim, colunaFim, this);
 						tab.setPeca(linhaIni, colunaIni, null);
-					}else {
-						//Criar classe de exceção
 					}
-				}else if ((pec != null) && (linha == coluna)&&(linha == 1)) {
+				}catch(ArrayIndexOutOfBoundsException e){
+					System.out.println(e);
+					System.out.println("A peça não pode ser movimentada nessa casa");
+				}
+			}else if ((pec != null) && ((Math.abs(coluna) == 1))&&(Math.abs(linha) == 1)) {
+				try {
 					tab.setPeca(linhaFim, colunaFim, null);
 					tab.setPeca(linhaFim, colunaFim, this);
 					tab.setPeca(linhaIni, colunaIni, null);
+				}catch(ArrayIndexOutOfBoundsException e){
+					System.out.println(e);
+					System.out.println("A peça não pode ser movimentada nessa casa");
 				}
-			}catch(ArrayIndexOutOfBoundsException e){
-				System.out.println(e);
-				System.out.println("A peça não pode ser movimentada nessa casa");
 			}
-		} else {
-			//exceção
+			if((this.primMov == true) && (Math.abs(coluna)==0 && Math.abs(linha)==2)) {
+				tab.setPeca(linhaFim, colunaFim, this);
+				tab.setPeca(linhaIni, colunaIni, null);
+				this.primMov = false;
+			}
 		}
-	}
+	} 
 }
+
