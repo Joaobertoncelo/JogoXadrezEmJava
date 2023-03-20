@@ -1,5 +1,7 @@
 package xadrez;
 
+import java.lang.ArrayIndexOutOfBoundsException;
+
 public class Rei extends Peca{
 	//Construtor
 	public Rei(int cor){
@@ -15,16 +17,24 @@ public class Rei extends Peca{
 	}
 	
 	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab) {	
-		Peca pec = tab.getPeca(linhaFim, colunaFim);
-		if (pec == null) {
-			int linha = linhaFim;
-			int coluna = colunaFim;
-			if(Math.abs(linha) <= 1 && Math.abs(coluna) <=1) {
-				tab.setPeca(linhaFim, colunaFim, this);
-				tab.setPeca(linhaIni, colunaIni, null);
-			}else {
-				//Criar classe de excessão
-			}
+		if(this.conferePos(colunaFim, linhaFim)) {
+			Peca pec = tab.getPeca(linhaFim, colunaFim);
+			if (pec == null) {
+				int linha = linhaFim - linhaIni;
+				int coluna = colunaFim - colunaIni;
+				try {
+					if(Math.abs(linha) <= 1 && Math.abs(coluna) <=1) {
+						tab.setPeca(linhaFim, colunaFim, this);
+						tab.setPeca(linhaIni, colunaIni, null);
+					}
+				}catch(ArrayIndexOutOfBoundsException e){
+					System.out.println(e);
+					System.out.println("A peça não pode ser movimentada nessa casa");
+				}
+			
+		} else {
+			//exceção
+		}
 		}
 	}
 }

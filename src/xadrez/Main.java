@@ -32,8 +32,5 @@ public class Main {
 			
 			branca = !branca;
 		}while(!chequeMate);
-		
-		
-		
 	}
 }
