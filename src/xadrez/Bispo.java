@@ -20,17 +20,29 @@ public class Bispo extends Peca{
 		try{
 			if(this.conferePos(colunaFim, linhaFim)) {
 				Peca pec = tab.getPeca(linhaFim, colunaFim);
-				if (pec == null) {
+				if (pec == null||(this.cor != pec.cor)) {
 					int linha = linhaFim - linhaIni;
 					int coluna = colunaFim - colunaIni;
 					if(Math.abs(linha) == Math.abs(coluna)) {
 						Boolean camLivre = true;
-						for(int i=linhaIni; i<linhaFim; i++) {
-							int j=colunaIni;
-							if(tab.getPeca(i, j) != null) {
-								camLivre = false;
+						if(linhaFim > linhaIni) {
+							for(int i=linhaIni+1; i<linhaFim; i++) {
+								int j=colunaIni+1;
+								if(tab.getPeca(i, j) != null) {
+									System.out.println("Caminho não livre");
+									camLivre = false;
+								}
+								j++;
 							}
-							j++;
+						}else {
+							for(int i=linhaIni-1; i>linhaFim; i--) {
+								int j=colunaIni-1;
+								if(tab.getPeca(i, j) != null) {
+									System.out.println("Caminho não livre");
+									camLivre = false;
+								}
+								j--;
+							}
 						}
 						if (camLivre) {
 							tab.setPeca(linhaFim, colunaFim, this);

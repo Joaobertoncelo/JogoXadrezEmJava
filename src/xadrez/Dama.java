@@ -20,7 +20,7 @@ public class Dama extends Peca{
 		try {
 			if(this.conferePos(colunaFim, linhaFim)) {
 				Peca pec = tab.getPeca(linhaFim, colunaFim);
-				if (pec == null) {
+				if (pec == null||(this.cor != pec.cor)) {
 					Boolean camLivre = true;
 					int linha = linhaFim - linhaIni;
 					int coluna = colunaFim - colunaIni;
