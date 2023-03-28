@@ -26,6 +26,7 @@ public class Peao extends Peca{
 					if(Math.abs(linha) == 1 && Math.abs(coluna) == 0) {
 						tab.setPeca(linhaFim, colunaFim, this);
 						tab.setPeca(linhaIni, colunaIni, null);
+						this.primMov = false;
 					}
 				}catch(ArrayIndexOutOfBoundsException e){
 					System.out.println(e);
@@ -36,6 +37,7 @@ public class Peao extends Peca{
 					tab.setPeca(linhaFim, colunaFim, null);
 					tab.setPeca(linhaFim, colunaFim, this);
 					tab.setPeca(linhaIni, colunaIni, null);
+					this.primMov = false;
 				}catch(ArrayIndexOutOfBoundsException e){
 					System.out.println(e);
 					System.out.println("A peça não pode ser movimentada nessa casa");
