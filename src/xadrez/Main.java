@@ -21,12 +21,12 @@ public class Main {
 				cor = 2;
 			}
 			//Escanear qual a movimentação do jogador
-			System.out.println("Onde está sua peca? (coluna/linha)"); 
+			System.out.println("Onde está sua peca? (linha/coluna)"); 
 			linhaIni = scanner.nextInt();
 			linhaIni --;
 			colunaIni = scanner.nextInt();
 			colunaIni --;
-			System.out.println("Para onde deseja movimentar? (coluna/linha)");
+			System.out.println("Para onde deseja movimentar? (linha/coluna)");
 			linhaFim = scanner.nextInt();
 			linhaFim --;
 			colunaFim = scanner.nextInt();

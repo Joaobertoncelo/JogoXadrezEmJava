@@ -1,7 +1,7 @@
 package xadrez;
 
 public class Torre extends Peca{
-	
+	private Boolean primMov = true;
 	
 	//Construtor
 	public Torre(int cor){
@@ -14,6 +14,10 @@ public class Torre extends Peca{
 		}else {
 			return "t";
 		}
+	}
+	
+	public Boolean getTorre() {
+		return primMov;
 	}
 	
 	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab) {
@@ -47,6 +51,7 @@ public class Torre extends Peca{
 							tab.setPeca(linhaFim, colunaFim, null);
 							tab.setPeca(linhaFim, colunaFim, this);
 							tab.setPeca(linhaIni, colunaIni, null);
+							this.primMov = false;
 						}
 					//Andar na vertical
 					}else if((Math.abs(linha) != 0 && Math.abs(coluna) == 0)){
@@ -70,6 +75,7 @@ public class Torre extends Peca{
 							tab.setPeca(linhaFim, colunaFim, null);
 							tab.setPeca(linhaFim, colunaFim, this);
 							tab.setPeca(linhaIni, colunaIni, null);
+							this.primMov = false;
 						}
 					}
 				}

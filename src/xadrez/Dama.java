@@ -22,40 +22,72 @@ public class Dama extends Peca{
 				Peca pec = tab.getPeca(linhaFim, colunaFim);
 				if (pec == null||(this.cor != pec.cor)) {
 					Boolean camLivre = true;
+					int i;
 					int linha = linhaFim - linhaIni;
 					int coluna = colunaFim - colunaIni;
+					//Andar na horizontal
 					if((Math.abs(linha) == 0 && Math.abs(coluna) != 0)) {
-						for(int i=colunaIni; i<colunaFim; i++) {
-							if(tab.getPeca(linhaIni, i) != null) {
-								camLivre = false;
+						if(colunaFim > colunaIni) {
+							for(i=colunaIni+1; i<colunaFim; i++) {
+								if(tab.getPeca(linhaIni, i) != null) {
+									System.out.println("Caminho não livre");
+									camLivre = false;
+								}
+							}
+						}else {
+							for(i=colunaIni-1; i>colunaFim; i--) {
+								if(tab.getPeca(linhaIni, i) != null) {
+									System.out.println("Caminho não livre");
+									camLivre = false;
+								}
 							}
 						}
+						System.out.println(camLivre);
 						if (camLivre) {
+							tab.setPeca(linhaFim, colunaFim, null);
 							tab.setPeca(linhaFim, colunaFim, this);
 							tab.setPeca(linhaIni, colunaIni, null);
-						}else {
-							//exceção
 						}
+					//Andar na vertical
 					}else if((Math.abs(linha) != 0 && Math.abs(coluna) == 0)){
-						for(int i=linhaIni; i<linhaFim; i++) {
-							if(tab.getPeca(i, colunaIni) != null) {
-								camLivre = false;
+						if(linhaFim > linhaIni) {
+							for(i=linhaIni+1; i<linhaFim; i++) {
+								if(tab.getPeca(i, colunaIni) != null) {
+									System.out.println("Caminho não livre");
+									camLivre = false;
+								}
+							}
+						}else {
+							for(i=linhaIni-1; i>linhaFim; i--) {
+								if(tab.getPeca(i, colunaIni) != null) {
+									System.out.println("Caminho não livre");
+									camLivre = false;
+								}
 							}
 						}
+						System.out.println(camLivre);
 						if (camLivre) {
+							tab.setPeca(linhaFim, colunaFim, null);
 							tab.setPeca(linhaFim, colunaFim, this);
 							tab.setPeca(linhaIni, colunaIni, null);
-						}else {
-							//exceção
 						}
 					}else if(Math.abs(linha) == Math.abs(coluna)) {
-						
-						for(int i=linhaIni; i<linhaFim; i++) {
-							int j = colunaIni;
-							if(tab.getPeca(i, j) != null) {
-								camLivre = false;
+						if(linhaFim > linhaIni) {
+							for(i=linhaIni+1; i<linhaFim; i++) {
+								int j=colunaIni+1;
+								if(tab.getPeca(i, j) != null) {
+									camLivre = false;
+								}
+								j++;
 							}
-							j++;
+						}else {
+							for(i=linhaIni-1; i>linhaFim; i--) {
+								int j=colunaIni-1;
+								if(tab.getPeca(i, j) != null) {
+									camLivre = false;
+								}
+								j--;
+							}
 						}
 						if (camLivre) {
 							tab.setPeca(linhaFim, colunaFim, this);

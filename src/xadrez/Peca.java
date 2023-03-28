@@ -15,7 +15,7 @@ public abstract class Peca{
 			return "peca";
 		}
 	}
-	
+	//confere se a peca está no tabuleiro
     public boolean conferePos(int x,int y){
         if(x<= 8 && y <= 8 && x >=0 && y >= 0){
             return true;
