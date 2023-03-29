@@ -20,21 +20,32 @@ public class Main {
 			}else {
 				cor = 2;
 			}
-			//Escanear qual a movimentação do jogador
-			System.out.println("Onde está sua peca? (linha/coluna)"); 
-			linhaIni = scanner.nextInt();
-			linhaIni --;
-			colunaIni = scanner.nextInt();
-			colunaIni --;
-			System.out.println("Para onde deseja movimentar? (linha/coluna)");
-			linhaFim = scanner.nextInt();
-			linhaFim --;
-			colunaFim = scanner.nextInt();
-			colunaFim --;
 			try {
-				p=tab.getPeca(linhaIni, colunaIni);
-				p.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
-				System.out.println(tab);
+				do {
+					//Escanear qual a movimentação do jogador
+					System.out.println("Onde está sua peca? (linha/coluna)" + cor); 
+					linhaIni = scanner.nextInt();
+					linhaIni --;
+					colunaIni = scanner.nextInt();
+					colunaIni --;
+					//Pega a peca desejada pelo usuário
+					p=tab.getPeca(linhaIni, colunaIni);
+					//confere se a peca é dele
+					if(p != null &&(p.cor == cor)) {
+						System.out.println("Para onde deseja movimentar? (linha/coluna)" + cor);
+						linhaFim = scanner.nextInt();
+						linhaFim --;
+						colunaFim = scanner.nextInt();
+						colunaFim --;
+						p.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
+						System.out.println(tab);
+						break;
+					}else if(p == null){
+						System.out.println("Não há peça aí! Escolha outra");
+					}else {
+						System.out.println("Essa peca nao eh sua! Selecione outra por favor");
+					}
+				}while(true);
 			}catch(NullPointerException e) {
 				System.out.println(e);
 				System.out.println("A peça não pode ser movimentada aí");
