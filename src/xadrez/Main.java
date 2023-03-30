@@ -8,7 +8,7 @@ public class Main {
 		Tabuleiro tab = new Tabuleiro();
 		System.out.println(tab);
 		Peca p;
-		Boolean chequeMate = false;
+		Boolean chequeMate = false, cheque = false;
 		Boolean branca = true;
 		int colunaIni = 0, linhaIni = 0, colunaFim = 0, linhaFim = 0;
 		int cor = 1;
@@ -31,7 +31,7 @@ public class Main {
 					//Pega a peca desejada pelo usuário
 					p=tab.getPeca(linhaIni, colunaIni);
 					//confere se a peca é dele
-					if(p != null &&(p.cor == cor)) {
+					if(p != null && (p.cor == cor)) {
 						System.out.println("Para onde deseja movimentar? (linha/coluna)" + cor);
 						linhaFim = scanner.nextInt();
 						linhaFim --;

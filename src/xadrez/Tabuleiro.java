@@ -105,12 +105,12 @@ public class Tabuleiro {
     	return string;
     }
     
-    public Peca getPeca(int x, int y){
-    	return tabuleiro[x][y];
+    public Peca getPeca(int linha, int coluna){
+    	return tabuleiro[linha][coluna];
     }
     
-    public void setPeca(int x, int y, Peca p) {
-    	tabuleiro[x][y] = p;
+    public void setPeca(int linha, int coluna, Peca p) {
+    	tabuleiro[linha][coluna] = p;
     }
     
 }
