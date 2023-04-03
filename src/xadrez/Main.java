@@ -1,5 +1,6 @@
 package xadrez;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -20,8 +21,8 @@ public class Main {
 			}else {
 				cor = 2;
 			}
-			try {
-				do {
+			do {
+				try {
 					//Escanear qual a movimentação do jogador
 					System.out.println("Onde está sua peca? (linha/coluna)" + cor); 
 					linhaIni = scanner.nextInt();
@@ -45,11 +46,18 @@ public class Main {
 					}else {
 						System.out.println("Essa peca nao eh sua! Selecione outra por favor");
 					}
-				}while(true);
-			}catch(NullPointerException e) {
-				System.out.println(e);
-				System.out.println("A peça não pode ser movimentada aí");
-			}
+				}catch(NullPointerException e) {
+					System.out.println(e);
+					System.out.println("Digite um valor válido");
+				}catch(ArrayIndexOutOfBoundsException e) {
+					System.out.println(e);
+					System.out.println("A peça não pode ser movimentada aí");
+				}catch(InputMismatchException e) {
+					System.out.println(e);
+					System.out.println("Por favor, digite um número");
+					scanner.reset();
+				}
+			}while(true);
 			branca = !branca;
 		}while(!chequeMate);
 	}
