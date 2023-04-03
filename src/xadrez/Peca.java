@@ -2,6 +2,7 @@ package xadrez;
 
 public abstract class Peca{
 	int cor;
+	Boolean primMov = true;
         
 	//Construtor
     public Peca(int cor){

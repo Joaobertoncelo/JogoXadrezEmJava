@@ -1,7 +1,6 @@
 package xadrez;
 
 public class Torre extends Peca{
-	private Boolean primMov = true;
 	
 	//Construtor
 	public Torre(int cor){

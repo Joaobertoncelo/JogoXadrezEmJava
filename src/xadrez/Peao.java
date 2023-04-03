@@ -1,7 +1,6 @@
 package xadrez;
 
 public class Peao extends Peca{
-	private Boolean primMov = true;
 	
 	//Construtor
 	public Peao(int cor){
