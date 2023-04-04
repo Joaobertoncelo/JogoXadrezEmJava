@@ -25,5 +25,5 @@ public abstract class Peca{
         }
     }
         
-	public abstract void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab);
+	public abstract Boolean andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab);
 }

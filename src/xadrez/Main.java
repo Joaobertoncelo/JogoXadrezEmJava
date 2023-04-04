@@ -8,7 +8,7 @@ public class Main {
 	public static void main(String[] args) {
 		Tabuleiro tab = new Tabuleiro();
 		System.out.println(tab);
-		Peca p;
+		Peca pIni, pFim;
 		Boolean chequeMate = false, cheque = false;
 		Boolean branca = true;
 		int colunaIni = 0, linhaIni = 0, colunaFim = 0, linhaFim = 0;
@@ -30,18 +30,24 @@ public class Main {
 					colunaIni = scanner.nextInt();
 					colunaIni --;
 					//Pega a peca desejada pelo usuário
-					p=tab.getPeca(linhaIni, colunaIni);
+					pIni=tab.getPeca(linhaIni, colunaIni);
 					//confere se a peca é dele
-					if(p != null && (p.cor == cor)) {
+					if(pIni != null && (pIni.cor == cor)) {
 						System.out.println("Para onde deseja movimentar? (linha/coluna)" + cor);
 						linhaFim = scanner.nextInt();
 						linhaFim --;
 						colunaFim = scanner.nextInt();
 						colunaFim --;
-						p.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
-						System.out.println(tab);
-						break;
-					}else if(p == null){
+						//Confere o destino da peça
+						pFim=tab.getPeca(linhaFim, colunaFim);
+						if(pFim == null || pFim.cor != cor) {
+							pIni.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
+							System.out.println(tab);
+							break;
+						}else {
+							System.out.println("A peca não pode ser movimentada aí");
+						}
+					}else if(pIni == null){
 						System.out.println("Não há peça aí! Escolha outra");
 					}else {
 						System.out.println("Essa peca nao eh sua! Selecione outra por favor");

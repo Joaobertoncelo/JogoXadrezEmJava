@@ -32,28 +32,28 @@ public class Rei extends Peca{
 					}			
 				}
 				//roque
+				//confere se é o primeiro movimento
 				if ((this.primMov)) {
-					System.out.println("é o primeiro movimento");
 					Peca torre;
 					torre = tab.getPeca(colunaFim, linhaFim);
+					//confere se a peça no canto é torre
 					if(torre instanceof Torre) {
-						System.out.println("é Torre");
+						//confere se é o primeiro movimento da torre
 						if(torre.primMov) {
-							System.out.println("é o primeiro movimento da torre");
+							//direita vazia 
 							if(coluna>0 
 									&&(tab.getPeca(linhaIni,colunaIni+1) == null)
 									&&(tab.getPeca(linhaIni,colunaIni+2) == null)) {
-								System.out.println("direita vazia");
 								tab.setPeca(linhaIni, colunaIni+2, this);
 								tab.setPeca(linhaIni, colunaIni, null);
 								tab.setPeca(linhaIni, colunaIni+1, torre);
 								tab.setPeca(linhaFim, colunaFim, null);
 								this.primMov = false;
+							//Esquerda vazia
 							}else if(coluna<0 
 									&& (tab.getPeca(linhaIni, colunaIni-1) == null)
 									&&((tab.getPeca(linhaIni, colunaIni-2) == null)
 									&&(tab.getPeca(linhaIni, colunaIni-3) == null))) {
-								System.out.println("Esquerda Vazia");
 								tab.setPeca(linhaIni, colunaIni-2, this);
 								tab.setPeca(linhaIni, colunaIni, null);
 								tab.setPeca(linhaIni, colunaIni-1, torre);
