@@ -15,10 +15,6 @@ public class Torre extends Peca{
 		}
 	}
 	
-	public Boolean getTorre() {
-		return primMov;
-	}
-	
 	public Boolean andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab) {
 		try {
 			if(this.conferePos(colunaFim, linhaFim)) {
@@ -32,14 +28,12 @@ public class Torre extends Peca{
 						if(colunaFim > colunaIni) {
 							for(i=colunaIni+1; i<colunaFim; i++) {
 								if(tab.getPeca(linhaIni, i) != null) {
-									System.out.println("Caminho não livre");
 									return false;
 								}
 							}
 						}else {
 							for(i=colunaIni-1; i>colunaFim; i--) {
 								if(tab.getPeca(linhaIni, i) != null) {
-									System.out.println("Caminho não livre");
 									return false;
 								}
 							}
@@ -53,14 +47,12 @@ public class Torre extends Peca{
 						if(linhaFim > linhaIni) {
 							for(i=linhaIni+1; i<linhaFim; i++) {
 								if(tab.getPeca(i, colunaIni) != null) {
-									System.out.println("Caminho não livre");
 									return false;
 								}
 							}
 						}else {
 							for(i=linhaIni-1; i>linhaFim; i--) {
 								if(tab.getPeca(i, colunaIni) != null) {
-									System.out.println("Caminho não livre");
 									return false;
 								}
 							}

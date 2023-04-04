@@ -46,6 +46,8 @@ public class Main {
 							System.out.println(tab);
 							if(camLivre) {
 								break;
+							}else {
+								System.out.println("A peca não pode ser movimentada aí");
 							}
 						}else {
 							System.out.println("A peca não pode ser movimentada aí");

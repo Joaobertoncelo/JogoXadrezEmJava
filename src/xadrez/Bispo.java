@@ -26,11 +26,8 @@ public class Bispo extends Peca{
 					int coluna = colunaFim - colunaIni;
 					if(Math.abs(linha) == Math.abs(coluna)) {
 						if(linhaFim > linhaIni && colunaFim > colunaIni) {
-							System.out.println("linha fim > linha ini");
 							j=colunaIni+1;
-							System.out.println("1");
 							for(i=linhaIni+1; i<linhaFim; i++) {
-								System.out.printf("peca: " + i + j + "\n");
 								if(tab.getPeca(i, j) != null) {
 									return false;
 								}
@@ -38,9 +35,7 @@ public class Bispo extends Peca{
 							}
 						}else if(linhaFim < linhaIni && colunaFim < colunaIni){
 							j=colunaIni-1;
-							System.out.println("2");
 							for(i=linhaIni-1; i>linhaFim; i--) {
-								System.out.printf("peca: " + i + j + "\n");
 								if(tab.getPeca(i, j) != null) {
 									return false;
 								}
@@ -48,9 +43,7 @@ public class Bispo extends Peca{
 							}
 						}else if(linhaFim < linhaIni && colunaFim > colunaIni) {
 							j=colunaIni+1;
-							System.out.println("3");
 							for(i=linhaIni-1; i>linhaFim; i--) {
-								System.out.printf("peca: " + i + j + "\n");
 								if(tab.getPeca(i, j) != null) {
 									return false;
 								}
@@ -58,9 +51,7 @@ public class Bispo extends Peca{
 							}
 						}else if(linhaFim > linhaIni && colunaFim < colunaIni){
 							j=colunaIni-1;
-							System.out.println("4");
 							for(i=linhaIni+1; i<linhaFim; i++) {
-								System.out.printf("peca: " + i + j + "\n");
 								if(tab.getPeca(i, j) != null) {
 									return false;
 								}
@@ -70,7 +61,6 @@ public class Bispo extends Peca{
 					}
 				}
 			}
-			System.out.println("caminho livre");
 			tab.setPeca(linhaFim, colunaFim, this);
 			tab.setPeca(linhaIni, colunaIni, null);
 		}catch(ArrayIndexOutOfBoundsException e){

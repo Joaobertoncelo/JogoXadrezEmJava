@@ -66,7 +66,7 @@ public class Rei extends Peca{
 			}
 		}catch(ArrayIndexOutOfBoundsException e){
 			System.out.println(e);
-			System.out.println("A peça não pode ser movimentada nessa casa");
+			System.out.println("A peça não pode ser movimentada nessa casa \n");
 		}
 		return true;
 	}
