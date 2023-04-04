@@ -17,7 +17,7 @@ public class Rei extends Peca{
 		}
 	}
 	
-	public void andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab) {	
+	public Boolean andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Tabuleiro tab) {	
 		try {
 			//Andar normal
 			if(this.conferePos(colunaFim, linhaFim)) {
@@ -68,5 +68,6 @@ public class Rei extends Peca{
 			System.out.println(e);
 			System.out.println("A peça não pode ser movimentada nessa casa");
 		}
+		return true;
 	}
 }

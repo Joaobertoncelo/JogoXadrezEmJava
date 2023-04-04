@@ -11,6 +11,7 @@ public class Main {
 		Peca pIni, pFim;
 		Boolean chequeMate = false, cheque = false;
 		Boolean branca = true;
+		Boolean camLivre = true;
 		int colunaIni = 0, linhaIni = 0, colunaFim = 0, linhaFim = 0;
 		int cor = 1;
 		Scanner scanner = new Scanner(System.in);
@@ -41,9 +42,11 @@ public class Main {
 						//Confere o destino da peça
 						pFim=tab.getPeca(linhaFim, colunaFim);
 						if(pFim == null || pFim.cor != cor) {
-							pIni.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
+							camLivre = pIni.andar(colunaIni, linhaIni, colunaFim, linhaFim, tab);
 							System.out.println(tab);
-							break;
+							if(camLivre) {
+								break;
+							}
 						}else {
 							System.out.println("A peca não pode ser movimentada aí");
 						}
