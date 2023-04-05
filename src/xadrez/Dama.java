@@ -21,7 +21,6 @@ public class Dama extends Peca{
 			if(this.conferePos(colunaFim, linhaFim)) {
 				Peca pec = tab.getPeca(linhaFim, colunaFim);
 				if (pec == null||(this.cor != pec.cor)) {
-					Boolean camLivre = true;
 					int i,j;
 					int linha = linhaFim - linhaIni;
 					int coluna = colunaFim - colunaIni;
@@ -40,11 +39,9 @@ public class Dama extends Peca{
 								}
 							}
 						}
-						if (camLivre) {
-							tab.setPeca(linhaFim, colunaFim, null);
-							tab.setPeca(linhaFim, colunaFim, this);
-							tab.setPeca(linhaIni, colunaIni, null);
-						}
+						tab.setPeca(linhaFim, colunaFim, null);
+						tab.setPeca(linhaFim, colunaFim, this);
+						tab.setPeca(linhaIni, colunaIni, null);
 					//Andar na vertical
 					}else if((Math.abs(linha) != 0 && Math.abs(coluna) == 0)){
 						if(linhaFim > linhaIni) {
@@ -60,12 +57,9 @@ public class Dama extends Peca{
 								}
 							}
 						}
-						System.out.println(camLivre);
-						if (camLivre) {
-							tab.setPeca(linhaFim, colunaFim, null);
-							tab.setPeca(linhaFim, colunaFim, this);
-							tab.setPeca(linhaIni, colunaIni, null);
-						}
+						tab.setPeca(linhaFim, colunaFim, null);
+						tab.setPeca(linhaFim, colunaFim, this);
+						tab.setPeca(linhaIni, colunaIni, null);
 					//Andar na diagonal
 					}else if(Math.abs(linha) == Math.abs(coluna)) {
 						if(linhaFim > linhaIni && colunaFim > colunaIni) {
@@ -101,10 +95,8 @@ public class Dama extends Peca{
 								j--;
 							}
 						}
-						if (camLivre) {
-							tab.setPeca(linhaFim, colunaFim, this);
-							tab.setPeca(linhaIni, colunaIni, null);
-						}
+						tab.setPeca(linhaFim, colunaFim, this);
+						tab.setPeca(linhaIni, colunaIni, null);
 					}
 				}
 			}

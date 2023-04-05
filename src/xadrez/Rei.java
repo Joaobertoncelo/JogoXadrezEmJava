@@ -29,6 +29,7 @@ public class Rei extends Peca{
 							tab.setPeca(linhaFim, colunaFim, this);
 							tab.setPeca(linhaIni, colunaIni, null);
 							this.primMov = false;
+							return false;
 					}			
 				}
 				//roque
@@ -49,6 +50,7 @@ public class Rei extends Peca{
 								tab.setPeca(linhaIni, colunaIni+1, torre);
 								tab.setPeca(linhaFim, colunaFim, null);
 								this.primMov = false;
+								return false;
 							//Esquerda vazia
 							}else if(coluna<0 
 									&& (tab.getPeca(linhaIni, colunaIni-1) == null)
@@ -58,7 +60,8 @@ public class Rei extends Peca{
 								tab.setPeca(linhaIni, colunaIni, null);
 								tab.setPeca(linhaIni, colunaIni-1, torre);
 								tab.setPeca(linhaFim, colunaFim, null);
-								this.primMov = false;								
+								this.primMov = false;
+								return false;
 							}
 						}
 					}
