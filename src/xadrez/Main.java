@@ -15,6 +15,7 @@ public class Main {
 		int colunaIni = 0, linhaIni = 0, colunaFim = 0, linhaFim = 0;
 		int cor = 1;
 		Scanner scanner = new Scanner(System.in);
+		Tela tela = new Tela();
 		do {
 			//definir de quem é a vez
 			if(branca) {
