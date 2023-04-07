@@ -37,38 +37,38 @@ public class Frame extends JFrame implements ActionListener
 	public Frame(){
 	    super("Chess");
 	    botoes = new JButton[64];
-	    Icon wking = new ImageIcon(getClass().getResource("/Imagens/White King.png"));
+	    Icon wking = new ImageIcon(getClass().getResource("/images/White King.png"));
 	    WKing = new JLabel(wking, 
 	    SwingConstants.LEFT);
-	    Icon wqueen = new ImageIcon(getClass().getResource("/Imagens/White Queen.png"));
+	    Icon wqueen = new ImageIcon(getClass().getResource("/images/White Queen.png"));
 	    WQueen = new JLabel(wqueen, 
 	    SwingConstants.LEFT);
-	    Icon wrook = new ImageIcon(getClass().getResource("/Imagens/White Rook.png"));
+	    Icon wrook = new ImageIcon(getClass().getResource("/images/White Rook.png"));
 	    WRook = new JLabel(wrook, 
 	    SwingConstants.RIGHT);
-	    Icon whorse = new ImageIcon(getClass().getResource("/Imagens/White Horse.png"));
+	    Icon whorse = new ImageIcon(getClass().getResource("/images/White Horse.png"));
 	    WHorse = new JLabel(whorse);
-	    Icon wbishop = new ImageIcon(getClass().getResource("/Imagens/White Bishop.png"));
+	    Icon wbishop = new ImageIcon(getClass().getResource("/images/White Bishop.png"));
 	    WBishop = new JLabel(wbishop);
-	    Icon wpawn = new ImageIcon(getClass().getResource("/Imagens/White Pawn.png"));
+	    Icon wpawn = new ImageIcon(getClass().getResource("/images/White Pawn.png"));
 	    WPawn = new JLabel(wpawn);
-	    Icon bking = new ImageIcon(getClass().getResource("/Imagens/Black King.png"));
+	    Icon bking = new ImageIcon(getClass().getResource("/images/Black King.png"));
 	    BKing = new JLabel(bking);
-	    Icon bqueen = new ImageIcon(getClass().getResource("/Imagens/Black Queen.png"));
+	    Icon bqueen = new ImageIcon(getClass().getResource("/images/Black Queen.png"));
 	    BQueen = new JLabel(bqueen);
-	    Icon brook = new ImageIcon(getClass().getResource("/Imagens/Black Rook.png"));
+	    Icon brook = new ImageIcon(getClass().getResource("/images/Black Rook.png"));
 	    BRook = new JLabel(brook);
-	    Icon bhorse = new ImageIcon(getClass().getResource("/Imagens/Black Horse.png"));
+	    Icon bhorse = new ImageIcon(getClass().getResource("/images/Black Horse.png"));
 	    BHorse = new JLabel(bhorse);
-	    Icon bbishop = new ImageIcon(getClass().getResource("/Imagens/Black Bishop.png"));
+	    Icon bbishop = new ImageIcon(getClass().getResource("/images/Black Bishop.png"));
 	    BBishop = new JLabel(bbishop);
-	    Icon bpawn = new ImageIcon(getClass().getResource("/Imagens/Black Pawn.png"));
+	    Icon bpawn = new ImageIcon(getClass().getResource("/images/Black Pawn.png"));
 	    BPawn = new JLabel(bpawn);
 	    
 	    //Cores
-	    Icon wpoint = new ImageIcon(getClass().getResource("/Imagens/White Point.png"));
+	    Icon wpoint = new ImageIcon(getClass().getResource("/images/White Point.png"));
 	    WPoint = new JLabel(wpoint);
-	    Icon bpoint = new ImageIcon(getClass().getResource("/Imagens/Black Point.png"));
+	    Icon bpoint = new ImageIcon(getClass().getResource("/images/Black Point.png"));
 	    BPoint = new JLabel(bpoint);
 	    
 	    //torres
@@ -147,6 +147,7 @@ public class Frame extends JFrame implements ActionListener
 	    		white = !white;
 	    	}
 	    }
+	    botoes[15].setBackground(Color.LIGHT_GRAY);
 	    
 	    //Plot Tabuleiro
 	    for (int i = 0; i < 64; i++){
