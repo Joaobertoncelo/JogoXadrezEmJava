@@ -31,8 +31,6 @@ public class Frame extends JFrame implements ActionListener
 	private final JLabel BHorse;
 	private final JLabel BBishop;
 	private final JLabel BPawn;
-	private final JLabel WPoint;
-	private final JLabel BPoint;
 	private final Container container; 
 	private final GridLayout gridLayout; 
 	private int[] firstClick = {-1, -1}; // coordenadas do primeiro clique
