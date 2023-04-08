@@ -59,7 +59,6 @@ public class Control {
 				}
 				//confere se a peca é dele
 				if(pIni != null && (corIni == cor)) {
-					System.out.println("primeiro if");
 					//Confere o destino da peça
 					pFim=board.getPeca(linhaFim, colunaFim);
 					System.out.println(pIni);
@@ -69,21 +68,16 @@ public class Control {
 					}
 					//Roque
 					if((pIni instanceof King)&&(pFim instanceof Rook)) {
-						System.out.println("Roque");
 						camLivre = pIni.andar(colunaIni, linhaIni, colunaFim, linhaFim, board);
 						if(camLivre) {
-							System.out.println("Caminho Livre");
 							white = !white;
 							return true;
 						}
 					}
 					if(pFim == null || corFim != cor) {
-						System.out.println("segundo if");
 						camLivre = pIni.andar(colunaIni, linhaIni, colunaFim, linhaFim, board);
-						System.out.println(camLivre);
 						//System.out.println(board);
 						if(camLivre) {
-							System.out.println("Caminho Livre");
 							white = !white;
 							return true;
 						}else {
