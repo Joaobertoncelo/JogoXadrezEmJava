@@ -11,9 +11,9 @@ public class King extends Piece{
     
 	public String toString() {
 		if(cor == 1) {
-			return "R";
+			return "White King";
 		}else {
-			return "r";
+			return "Black King";
 		}
 	}
 	
@@ -29,7 +29,7 @@ public class King extends Piece{
 							tab.setPeca(linhaFim, colunaFim, this);
 							tab.setPeca(linhaIni, colunaIni, null);
 							this.primMov = false;
-							return false;
+							return true;
 					}			
 				}
 				//roque
@@ -37,6 +37,7 @@ public class King extends Piece{
 				if ((this.primMov)) {
 					Piece rook;
 					rook = tab.getPeca(colunaFim, linhaFim);
+					System.out.println(rook);
 					//confere se a peça no canto é torre
 					if(rook instanceof Rook) {
 						//confere se é o primeiro movimento da torre
@@ -45,12 +46,13 @@ public class King extends Piece{
 							if(coluna>0 
 									&&(tab.getPeca(linhaIni,colunaIni+1) == null)
 									&&(tab.getPeca(linhaIni,colunaIni+2) == null)) {
+								System.out.println(rook);
 								tab.setPeca(linhaIni, colunaIni+2, this);
 								tab.setPeca(linhaIni, colunaIni, null);
 								tab.setPeca(linhaIni, colunaIni+1, rook);
 								tab.setPeca(linhaFim, colunaFim, null);
 								this.primMov = false;
-								return false;
+								return true;
 							//Esquerda vazia
 							}else if(coluna<0 
 									&& (tab.getPeca(linhaIni, colunaIni-1) == null)
@@ -61,7 +63,7 @@ public class King extends Piece{
 								tab.setPeca(linhaIni, colunaIni-1, rook);
 								tab.setPeca(linhaFim, colunaFim, null);
 								this.primMov = false;
-								return false;
+								return true;
 							}
 						}
 					}
@@ -71,6 +73,6 @@ public class King extends Piece{
 			System.out.println(e);
 			System.out.println("A peça não pode ser movimentada nessa casa \n");
 		}
-		return true;
+		return false;
 	}
 }

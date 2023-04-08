@@ -1,18 +1,20 @@
 package view;
 
-import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.event.ActionListener;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-import java.awt.FlowLayout; 
-import javax.swing.JFrame; 
-import javax.swing.JLabel; 
-import javax.swing.JFrame;
+import java.awt.event.ActionListener;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.SwingConstants; 
-import javax.swing.Icon; 
-import javax.swing.ImageIcon; 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+import controller.Control;
+import model.*;
 
 public class Frame extends JFrame implements ActionListener 
 {
@@ -33,6 +35,11 @@ public class Frame extends JFrame implements ActionListener
 	private final JLabel BPoint;
 	private final Container container; 
 	private final GridLayout gridLayout; 
+	private int[] firstClick = {-1, -1}; // coordenadas do primeiro clique
+    private int[] secondClick = {-1, -1}; // coordenadas do segundo clique
+
+	Control control = new Control();
+
 		
 	public Frame(){
 	    super("Chess");
@@ -65,73 +72,51 @@ public class Frame extends JFrame implements ActionListener
 	    Icon bpawn = new ImageIcon(getClass().getResource("/images/Black Pawn.png"));
 	    BPawn = new JLabel(bpawn);
 	    
-	    //Cores
-	    Icon wpoint = new ImageIcon(getClass().getResource("/images/White Point.png"));
-	    WPoint = new JLabel(wpoint);
-	    Icon bpoint = new ImageIcon(getClass().getResource("/images/Black Point.png"));
-	    BPoint = new JLabel(bpoint);
-	    
 	    //torres
 	    botoes[0] = new JButton(wrook);
-        botoes[0].addActionListener(this);
         botoes[7] = new JButton(wrook);
-        botoes[7].addActionListener(this);
 
         botoes[56] = new JButton(brook);
-        botoes[56].addActionListener(this);
         botoes[63] = new JButton(brook);
-        botoes[63].addActionListener(this);
         
         //Cavalos
         botoes[1] = new JButton(whorse);
-        botoes[1].addActionListener(this);
         botoes[6] = new JButton(whorse);
-        botoes[6].addActionListener(this);
 
         botoes[57] = new JButton(bhorse);
-        botoes[57].addActionListener(this);
         botoes[62] = new JButton(bhorse);
-        botoes[62].addActionListener(this);
         
         //Bispos
         botoes[2] = new JButton(wbishop);
-        botoes[2].addActionListener(this);
         botoes[5] = new JButton(wbishop);
-        botoes[5].addActionListener(this);
 
         botoes[58] = new JButton(bbishop);
-        botoes[58].addActionListener(this);
         botoes[61] = new JButton(bbishop);
-        botoes[61].addActionListener(this);
         
         //Damas
         botoes[3] = new JButton(wqueen);
-        botoes[3].addActionListener(this);
         botoes[59] = new JButton(bqueen);
-        botoes[59].addActionListener(this);
         
         //Reis
         botoes[4] = new JButton(wking);
-        botoes[4].addActionListener(this);
         botoes[60] = new JButton(bking);
-        botoes[60].addActionListener(this);
         
         //Peoes brancos
 	    for (int i = 8; i < 16; i++){
 	         botoes[i] = new JButton(wpawn);
-	         botoes[i].addActionListener(this);
 	    }
 	    //peoes pretos
 	    for (int i = 48; i < 56; i++){
 	         botoes[i] = new JButton(bpawn);
-	         botoes[i].addActionListener(this);
 	    }
 	    
 	    for (int i = 0; i < 64; i++){
 	    	if(botoes[i]==null) {
 	    		botoes[i] = new JButton(" ");
-	    		botoes[i].addActionListener(this);
 	    	}
+	    }
+	    for (int i = 0; i < 64; i++) {
+	        botoes[i].addActionListener(this);
 	    }
 	    
 	    //Cores
@@ -159,12 +144,49 @@ public class Frame extends JFrame implements ActionListener
 	    gridLayout = new GridLayout(8, 8, 5, 5); // 2 por 3; gaps de 5
 	    container = getContentPane();
 	    setLayout(gridLayout); 
+	    
+	    for (int i = 0; i < 64; i++) {
+	        botoes[i].addActionListener(this);
+	    }
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent event){ 
-	//container.setLayout(gridLayout);
-	} 
+		// Obter a coordenada da posição clicada em matriz
+		JButton button = (JButton) event.getSource();
+		int row = -1;
+		int column = -1;
+		for (int i = 0; i < 64; i++) {
+			if (botoes[i] == button) {
+				row = i / 8;
+				column = i % 8;
+				break;
+			}
+		}
+		// Verificar se a primeira coordenada já foi definida
+        if (firstClick[0] == -1) {
+            firstClick[0] = row;
+            firstClick[1] = column;
+            control.setFirstClick(row, column);
+        } else {
+        	// Verificar se as coordenadas são diferentes
+            if (row != firstClick[0] || column != firstClick[1]) {
+            	// Armazenar a coordenada atual como a segunda coordenada
+                secondClick[0] = row;
+                secondClick[1] = column;
+                control.setSecondClick(row, column);
+                
+                control.processClicks();
+                control.updateBoard(botoes);
+
+                // Resetar as coordenadas dos cliques
+                firstClick[0] = -1;
+                firstClick[1] = -1;
+                secondClick[0] = -1;
+                secondClick[1] = -1;
+            }
+        }
+	}
 	 
 	public static void main(String[] args)
 	{ 

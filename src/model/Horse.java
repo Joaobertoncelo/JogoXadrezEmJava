@@ -10,9 +10,9 @@ public class Horse extends Piece{
 	
 	public String toString() {
 		if(cor == 1) {
-			return "C";
+			return "White Horse";
 		}else {
-			return "c";
+			return "Black Horse";
 		}
 	}
 	
@@ -26,6 +26,7 @@ public class Horse extends Piece{
 					if((Math.abs(linha) ==1 && Math.abs(coluna) ==2) || (Math.abs(linha) ==2 && Math.abs(coluna) ==1)) {
 						tab.setPeca(linhaFim, colunaFim, this);
 						tab.setPeca(linhaIni, colunaIni, null);
+						return true;
 					}
 				}
 			}
@@ -33,6 +34,6 @@ public class Horse extends Piece{
 			System.out.println(e);
 			System.out.println("A peça não pode ser movimentada nessa casa");
 		}
-		return true;
+		return false;
 	}
 }

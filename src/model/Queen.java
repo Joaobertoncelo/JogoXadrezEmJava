@@ -10,9 +10,9 @@ public class Queen extends Piece{
     
 	public String toString() {
 		if(cor == 1) {
-			return "D";
+			return "White Queen";
 		}else {
-			return "d";
+			return "Black Queen";
 		}
 	}
 	

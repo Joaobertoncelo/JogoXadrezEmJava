@@ -9,9 +9,9 @@ public class Rook extends Piece{
 	
 	public String toString() {
 		if(cor == 1) {
-			return "T";
+			return "White Rook";
 		}else {
-			return "t";
+			return "Black Rook";
 		}
 	}
 	
@@ -42,6 +42,7 @@ public class Rook extends Piece{
 						tab.setPeca(linhaFim, colunaFim, this);
 						tab.setPeca(linhaIni, colunaIni, null);
 						this.primMov = false;
+						return true;
 					//Andar na vertical
 					}else if((Math.abs(linha) != 0 && Math.abs(coluna) == 0)){
 						if(linhaFim > linhaIni) {
@@ -61,6 +62,7 @@ public class Rook extends Piece{
 						tab.setPeca(linhaFim, colunaFim, this);
 						tab.setPeca(linhaIni, colunaIni, null);
 						this.primMov = false;
+						return true;
 					}
 				}
 			}
@@ -68,7 +70,7 @@ public class Rook extends Piece{
 			System.out.println(e);
 			System.out.println("A peça não pode ser movimentada nessa casa");
 		}
-		return true;
+		return false;
 	}
 }
 

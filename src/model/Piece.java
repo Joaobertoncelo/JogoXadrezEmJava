@@ -26,4 +26,8 @@ public abstract class Piece{
     }
         
 	public abstract Boolean andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Board tab);
+	
+	public int getCor(){
+    	return cor;
+    }
 }

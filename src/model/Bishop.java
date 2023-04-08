@@ -10,9 +10,9 @@ public class Bishop extends Piece{
 	
 	public String toString() {
 		if(cor == 1) {
-			return "B";
+			return "White Bishop";
 		}else {
-			return "b";
+			return "Black Bishop";
 		}
 	}
 	
@@ -58,15 +58,16 @@ public class Bishop extends Piece{
 								j--;
 							}
 						}
+						tab.setPeca(linhaFim, colunaFim, this);
+						tab.setPeca(linhaIni, colunaIni, null);
+						return true;
 					}
 				}
 			}
-			tab.setPeca(linhaFim, colunaFim, this);
-			tab.setPeca(linhaIni, colunaIni, null);
 		}catch(ArrayIndexOutOfBoundsException e){
 			System.out.println(e);
 			System.out.println("A peça não pode ser movimentada nessa casa");
 		}
-		return true;
+		return false;
 	}
 }
