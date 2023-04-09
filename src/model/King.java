@@ -36,34 +36,36 @@ public class King extends Piece{
 				//confere se é o primeiro movimento
 				if ((this.primMov)) {
 					Piece rook;
-					rook = tab.getPeca(colunaFim, linhaFim);
+					rook = tab.getPeca(linhaFim, colunaFim);
 					System.out.println(rook);
 					//confere se a peça no canto é torre
 					if(rook instanceof Rook) {
-						//confere se é o primeiro movimento da torre
-						if(rook.primMov) {
-							//direita vazia 
-							if(coluna>0 
-									&&(tab.getPeca(linhaIni,colunaIni+1) == null)
-									&&(tab.getPeca(linhaIni,colunaIni+2) == null)) {
-								System.out.println(rook);
-								tab.setPeca(linhaIni, colunaIni+2, this);
-								tab.setPeca(linhaIni, colunaIni, null);
-								tab.setPeca(linhaIni, colunaIni+1, rook);
-								tab.setPeca(linhaFim, colunaFim, null);
-								this.primMov = false;
-								return true;
-							//Esquerda vazia
-							}else if(coluna<0 
-									&& (tab.getPeca(linhaIni, colunaIni-1) == null)
-									&&((tab.getPeca(linhaIni, colunaIni-2) == null)
-									&&(tab.getPeca(linhaIni, colunaIni-3) == null))) {
-								tab.setPeca(linhaIni, colunaIni-2, this);
-								tab.setPeca(linhaIni, colunaIni, null);
-								tab.setPeca(linhaIni, colunaIni-1, rook);
-								tab.setPeca(linhaFim, colunaFim, null);
-								this.primMov = false;
-								return true;
+						if(rook.cor == this.cor) {
+							//confere se é o primeiro movimento da torre
+							if(rook.primMov) {
+								//direita vazia 
+								if(coluna>0 
+										&&(tab.getPeca(linhaIni,colunaIni+1) == null)
+										&&(tab.getPeca(linhaIni,colunaIni+2) == null)) {
+									System.out.println(rook);
+									tab.setPeca(linhaIni, colunaIni+2, this);
+									tab.setPeca(linhaIni, colunaIni, null);
+									tab.setPeca(linhaIni, colunaIni+1, rook);
+									tab.setPeca(linhaFim, colunaFim, null);
+									this.primMov = false;
+									return true;
+								//Esquerda vazia
+								}else if(coluna<0 
+										&& (tab.getPeca(linhaIni, colunaIni-1) == null)
+										&&((tab.getPeca(linhaIni, colunaIni-2) == null)
+										&&(tab.getPeca(linhaIni, colunaIni-3) == null))) {
+									tab.setPeca(linhaIni, colunaIni-2, this);
+									tab.setPeca(linhaIni, colunaIni, null);
+									tab.setPeca(linhaIni, colunaIni-1, rook);
+									tab.setPeca(linhaFim, colunaFim, null);
+									this.primMov = false;
+									return true;
+								}
 							}
 						}
 					}
