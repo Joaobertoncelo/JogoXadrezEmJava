@@ -18,7 +18,7 @@ public class Control {
     //Branca ou não
     private Boolean white = true;
     //Validação de cor
-    private int cor = 1, corIni, corFim;
+    private int cor = 0, corIni, corFim;
     //Tabuleiro
     private Board board = new Board();
     //pecas
@@ -46,10 +46,6 @@ public class Control {
 				cor = 2;
 			}
 			try {
-				/*System.out.println(linhaIni);
-				System.out.println(colunaIni);
-				System.out.println(linhaFim);
-				System.out.println(colunaFim);*/
 				//Pega a peca desejada pelo usuário
 				pIni=board.getPeca(linhaIni, colunaIni);
 				if(pIni != null) {
@@ -61,8 +57,6 @@ public class Control {
 				if(pIni != null && (corIni == cor)) {
 					//Confere o destino da peça
 					pFim=board.getPeca(linhaFim, colunaFim);
-					System.out.println(pIni);
-					System.out.println(pFim);
 					if(pFim != null) {
 						corFim=pFim.getCor();
 					}
@@ -76,7 +70,6 @@ public class Control {
 					}
 					if(pFim == null || corFim != cor) {
 						camLivre = pIni.andar(colunaIni, linhaIni, colunaFim, linhaFim, board);
-						//System.out.println(board);
 						if(camLivre) {
 							white = !white;
 							return true;
@@ -115,10 +108,8 @@ public class Control {
 	            Piece piece = board.getPeca(i, j);
 	            if (piece == null) {
 	                buttons[i * 8 + j].setIcon(null);
-	                //System.out.println("nulo");
 	            } else {
 	            	Icon peca = new ImageIcon(getClass().getResource("/images/" + piece.toString() + ".png"));
-	                //System.out.println("/images/" + piece.toString() + ".png");
 	                buttons[i * 8 + j].setIcon(peca);
 	            }
 	        }

@@ -37,7 +37,6 @@ public class King extends Piece{
 				if ((this.primMov)) {
 					Piece rook;
 					rook = tab.getPeca(linhaFim, colunaFim);
-					System.out.println(rook);
 					//confere se a peça no canto é torre
 					if(rook instanceof Rook) {
 						if(rook.cor == this.cor) {
