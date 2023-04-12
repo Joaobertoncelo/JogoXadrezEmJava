@@ -17,6 +17,7 @@ public class Pawn extends Piece{
 	}
 	
 	public Boolean andar(int colunaIni, int linhaIni, int colunaFim, int linhaFim, Board tab) {
+
 		try {
 			if(this.conferePos(colunaFim, linhaFim)) {
 				Piece pec = tab.getPeca(linhaFim, colunaFim);
@@ -117,6 +118,22 @@ public class Pawn extends Piece{
 		return false;
 	} 
 	
+	public void promover(String peca, int linha, int coluna, int cor) {
+		Board board = new Board();
+		if(peca == "Dama") {
+			Piece dama = new Queen(cor);
+	        board.setPeca(linha, coluna, dama);
+		}else if(peca == "Bispo") {
+			Piece bispo = new Bishop(cor);
+	        board.setPeca(linha, coluna, bispo);
+		}else if(peca == "Cavalo") {
+			Piece cavalo = new Horse(cor);
+	        board.setPeca(linha, coluna, cavalo);
+		}else if(peca == "Torre") {
+			Piece torre = new Rook(cor);
+	        board.setPeca(linha, coluna, torre);
+		}
+	}
 	
 }
 

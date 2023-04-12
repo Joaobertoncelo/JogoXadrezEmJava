@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 import controller.Control;
@@ -184,6 +185,21 @@ public class Frame extends JFrame implements ActionListener
                 secondClick[1] = -1;
             }
         }
+	}
+	
+	public static String changePawn() {
+		Frame frame = new Frame(); 
+		Object[] possibilities = {"Dama", "Bispo", "Cavalo", "Torre"};
+		String s = (String)JOptionPane.showInputDialog(
+                frame,
+                "Evoluir peão para:\n"
+                + " ",
+                "Customized Dialog",
+                JOptionPane.PLAIN_MESSAGE,
+                null, possibilities,
+                "ham");
+		System.out.println(s);
+		return s;
 	}
 	 
 	public static void main(String[] args)

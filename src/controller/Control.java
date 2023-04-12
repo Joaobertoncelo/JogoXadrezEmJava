@@ -9,9 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import model.*;
-import view.Frame;
+import view.*;
 
 public class Control {
+	//Posição Peão
+	private Boolean posPawn;
 	//Cliques
 	private int linhaIni, colunaIni;
     private int linhaFim, colunaFim;
@@ -70,9 +72,30 @@ public class Control {
 							return true;
 						}
 					}
+					//Confere se o movimento é possível
 					if(pFim == null || corFim != cor) {
 						camLivre = pIni.andar(colunaIni, linhaIni, colunaFim, linhaFim, board);
 						if(camLivre) {
+							String change;
+							if(cor == 1) {
+								int linha = 7;
+								for (int coluna = 0; coluna<8; coluna++) {
+									Piece pec = board.getPeca(linha, coluna);
+									if(pec instanceof Pawn) {
+										change = Frame.changePawn();
+										((Pawn) pec).promover(change, linha, coluna, cor);
+									}
+								}
+							}else if(cor == 2) {
+								int linha = 0;
+								for (int coluna = 0; coluna<8; coluna++) {
+									Piece pec = board.getPeca(linha, coluna);
+									if(pec instanceof Pawn) {
+										change = Frame.changePawn();
+										((Pawn) pec).promover(change, linha, coluna, cor);
+									}
+								}
+							}
 							white = !white;
 							return true;
 						}else {
