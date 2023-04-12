@@ -121,16 +121,16 @@ public class Frame extends JFrame implements ActionListener
 	    Boolean white = true;
 	    for (int i = 0; i < 64; i++){
 	    	if(white) {
-	    		botoes[i].setBackground(Color.LIGHT_GRAY);
+	    		botoes[i].setBackground(Color.ORANGE);
 	    	}else {
-	    		botoes[i].setBackground(Color.DARK_GRAY);
+	    		botoes[i].setBackground(Color.BLUE);
 	    	}
 	    	white = !white;
 	    	if((i == 7)||(i==14)||(i==23)||(i==31)||(i==39)||(i==47)||(i==55)) {
 	    		white = !white;
 	    	}
 	    }
-	    botoes[15].setBackground(Color.LIGHT_GRAY);
+	    botoes[15].setBackground(Color.ORANGE);
 	    
 	    //Plot Tabuleiro
 	    for (int i = 0; i < 64; i++){
