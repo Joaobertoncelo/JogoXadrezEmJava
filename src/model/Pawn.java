@@ -2,6 +2,7 @@ package model;
 
 public class Pawn extends Piece{
 	
+	
 	//Construtor
 	public Pawn(int cor){
        super(cor);
@@ -21,25 +22,91 @@ public class Pawn extends Piece{
 				Piece pec = tab.getPeca(linhaFim, colunaFim);
 				int linha = linhaFim - linhaIni;
 				int coluna = colunaFim - colunaIni;
-				if (pec == null) {
-					if(Math.abs(linha) == 1 && Math.abs(coluna) == 0) {
+				if(Math.abs(linha) == 1 && Math.abs(coluna) == 0 && pec == null) {
+					if(cor == 1 && (linhaFim > linhaIni)) {
 						tab.setPeca(linhaFim, colunaFim, this);
 						tab.setPeca(linhaIni, colunaIni, null);
 						this.primMov = false;
 						return true;
+					}else if(cor == 2 && (linhaFim < linhaIni)){
+						tab.setPeca(linhaFim, colunaFim, this);
+						tab.setPeca(linhaIni, colunaIni, null);
+						this.primMov = false;
+						return true;
+					}else {
+						return false;
 					}
-				}else if ((pec != null) && ((Math.abs(coluna) == 1))&&(Math.abs(linha) == 1)) {
-					tab.setPeca(linhaFim, colunaFim, null);
-					tab.setPeca(linhaFim, colunaFim, this);
-					tab.setPeca(linhaIni, colunaIni, null);
-					this.primMov = false;
-					return true;
+				}
+				if (((Math.abs(coluna) == 1))&&(Math.abs(linha) == 1)) {
+					//en Passant
+					if((colunaIni+1)<8 || (colunaIni-1)>8) {
+						int lPawn = colunaIni-1;
+						Piece left = tab.getPeca(linhaIni, lPawn);
+						int rPawn = colunaIni+1;
+						Piece right = tab.getPeca(linhaIni, rPawn);
+						if(cor == 1) {
+							if((left instanceof Pawn)&&(tab.getBEnPassant())) {
+								tab.setPeca(linhaIni, colunaIni-1, null);
+								tab.setPeca(linhaFim, colunaFim, null);
+								tab.setPeca(linhaFim, colunaFim, this);
+								tab.setPeca(linhaIni, colunaIni, null);
+								this.primMov = false;
+								return true;
+							}else if((right instanceof Pawn)&&(tab.getBEnPassant())) {
+								tab.setPeca(linhaIni, colunaIni+1, null);
+								tab.setPeca(linhaFim, colunaFim, null);
+								tab.setPeca(linhaFim, colunaFim, this);
+								tab.setPeca(linhaIni, colunaIni, null);
+								this.primMov = false;
+								return true;
+							}
+						}else if (cor == 2) {
+							if((left instanceof Pawn)&&(tab.getWEnPassant())) {
+								tab.setPeca(linhaIni, colunaIni-1, null);
+								tab.setPeca(linhaFim, colunaFim, null);
+								tab.setPeca(linhaFim, colunaFim, this);
+								tab.setPeca(linhaIni, colunaIni, null);
+								this.primMov = false;
+								return true;
+							}else if((right instanceof Pawn)&&(tab.getWEnPassant())) {
+								tab.setPeca(linhaIni, colunaIni+1, null);
+								tab.setPeca(linhaFim, colunaFim, null);
+								tab.setPeca(linhaFim, colunaFim, this);
+								tab.setPeca(linhaIni, colunaIni, null);
+								this.primMov = false;
+								return true;
+							}
+						}
+					}
+					//Captura Peça
+					if(pec != null) {
+						if(cor == 1 && linha > 0) {
+							tab.setPeca(linhaFim, colunaFim, null);
+							tab.setPeca(linhaFim, colunaFim, this);
+							tab.setPeca(linhaIni, colunaIni, null);
+							this.primMov = false;
+							return true;
+						}else if(cor == 2 && linha < 0){
+							tab.setPeca(linhaFim, colunaFim, null);
+							tab.setPeca(linhaFim, colunaFim, this);
+							tab.setPeca(linhaIni, colunaIni, null);
+							this.primMov = false;
+							return true;
+						}else {
+							return false;
+						}
+					}
 				}
 				//Primeiro movimento pode andar duas casas
 				if((this.primMov == true) && (Math.abs(coluna) == 0 && Math.abs(linha) == 2)) {
 					tab.setPeca(linhaFim, colunaFim, this);
 					tab.setPeca(linhaIni, colunaIni, null);
 					this.primMov = false;
+					if(cor == 1) {
+						tab.setWEnPassant(true);
+					}else if(cor ==2) {
+						tab.setBEnPassant(true);
+					}
 					return true;
 				}
 			}
@@ -49,5 +116,7 @@ public class Pawn extends Piece{
 		}
 		return false;
 	} 
+	
+	
 }
 

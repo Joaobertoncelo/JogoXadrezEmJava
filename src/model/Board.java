@@ -1,8 +1,9 @@
 package model;
 
 public class Board {
-    
-    private Piece[][] tabuleiro;
+	private Boolean BEnPassant = false;
+	private Boolean WEnPassant = false;
+	private Piece[][] tabuleiro;
     
     
   //Construtor
@@ -113,4 +114,19 @@ public class Board {
     	tabuleiro[linha][coluna] = p;
     }
     
+    public Boolean getBEnPassant() {
+		return BEnPassant;
+	}
+	
+	public void setBEnPassant(Boolean enPassant) {
+		this.BEnPassant = enPassant;
+	}
+	
+	public Boolean getWEnPassant() {
+		return WEnPassant;
+	}
+	
+	public void setWEnPassant(Boolean enPassant) {
+		this.WEnPassant = enPassant;
+	}
 }

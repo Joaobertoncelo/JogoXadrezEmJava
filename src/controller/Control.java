@@ -42,8 +42,10 @@ public class Control {
 			//definir de quem é a vez
 			if(white) {
 				cor = 1;
+				board.setWEnPassant(false);
 			}else {
 				cor = 2;
+				board.setBEnPassant(false);
 			}
 			try {
 				//Pega a peca desejada pelo usuário
