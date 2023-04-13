@@ -12,8 +12,6 @@ import model.*;
 import view.*;
 
 public class Control {
-	//Posição Peão
-	private Boolean posPawn;
 	//Cliques
 	private int linhaIni, colunaIni;
     private int linhaFim, colunaFim;
@@ -29,6 +27,8 @@ public class Control {
     private Boolean chequeMate = false, cheque = false;
     //Testar caminho Livre
     private Boolean camLivre = true;
+    //Testar numero de reis
+    private int numKings = 0;
 
     public void setFirstClick(int linhaIni, int colunaIni) {
         this.linhaIni = linhaIni;
@@ -40,7 +40,7 @@ public class Control {
         this.colunaFim = colunaFim;
     }
 
-    public Boolean processClicks() {
+    public Boolean processClicks(JButton[] buttons) {
 			//definir de quem é a vez
 			if(white) {
 				cor = 1;
@@ -83,7 +83,8 @@ public class Control {
 									Piece pec = board.getPeca(linha, coluna);
 									if(pec instanceof Pawn) {
 										change = Frame.changePawn();
-										((Pawn) pec).promover(change, linha, coluna, cor);
+										pec = ((Pawn) pec).promover(change, linha, coluna, cor);
+										board.setPeca(linha, coluna, pec);
 									}
 								}
 							}else if(cor == 2) {
@@ -92,9 +93,23 @@ public class Control {
 									Piece pec = board.getPeca(linha, coluna);
 									if(pec instanceof Pawn) {
 										change = Frame.changePawn();
-										((Pawn) pec).promover(change, linha, coluna, cor);
+										pec = ((Pawn) pec).promover(change, linha, coluna, cor);
+										board.setPeca(linha, coluna, pec);
 									}
 								}
+							}
+							for (int i = 0; i < 8; i++) {
+						        for (int j = 0; j < 8; j++) {
+						        	Piece isKing = board.getPeca(i, j);
+						        	if(isKing instanceof King) {
+						        		numKings++;
+						        	}
+						        }
+							}
+							if(numKings!=2) {
+								Frame.gameOver();
+							}else {
+								numKings = 0;
 							}
 							white = !white;
 							return true;

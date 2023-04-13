@@ -46,14 +46,14 @@ public class Pawn extends Piece{
 						int rPawn = colunaIni+1;
 						Piece right = tab.getPeca(linhaIni, rPawn);
 						if(cor == 1) {
-							if((left instanceof Pawn)&&(tab.getBEnPassant())) {
+							if(((left instanceof Pawn)&&(tab.getBEnPassant())&&colunaFim<colunaIni)) {
 								tab.setPeca(linhaIni, colunaIni-1, null);
 								tab.setPeca(linhaFim, colunaFim, null);
 								tab.setPeca(linhaFim, colunaFim, this);
 								tab.setPeca(linhaIni, colunaIni, null);
 								this.primMov = false;
 								return true;
-							}else if((right instanceof Pawn)&&(tab.getBEnPassant())) {
+							}else if((right instanceof Pawn)&&(tab.getBEnPassant()&&colunaFim>colunaIni)) {
 								tab.setPeca(linhaIni, colunaIni+1, null);
 								tab.setPeca(linhaFim, colunaFim, null);
 								tab.setPeca(linhaFim, colunaFim, this);
@@ -62,14 +62,14 @@ public class Pawn extends Piece{
 								return true;
 							}
 						}else if (cor == 2) {
-							if((left instanceof Pawn)&&(tab.getWEnPassant())) {
+							if((left instanceof Pawn)&&(tab.getWEnPassant()&&colunaFim<colunaIni)) {
 								tab.setPeca(linhaIni, colunaIni-1, null);
 								tab.setPeca(linhaFim, colunaFim, null);
 								tab.setPeca(linhaFim, colunaFim, this);
 								tab.setPeca(linhaIni, colunaIni, null);
 								this.primMov = false;
 								return true;
-							}else if((right instanceof Pawn)&&(tab.getWEnPassant())) {
+							}else if((right instanceof Pawn)&&(tab.getWEnPassant()&&colunaFim>colunaIni)) {
 								tab.setPeca(linhaIni, colunaIni+1, null);
 								tab.setPeca(linhaFim, colunaFim, null);
 								tab.setPeca(linhaFim, colunaFim, this);
@@ -118,21 +118,21 @@ public class Pawn extends Piece{
 		return false;
 	} 
 	
-	public void promover(String peca, int linha, int coluna, int cor) {
-		Board board = new Board();
+	public Piece promover(String peca, int linha, int coluna, int cor) {
 		if(peca == "Dama") {
-			Piece dama = new Queen(cor);
-	        board.setPeca(linha, coluna, dama);
+			Queen dama = new Queen(cor);
+	        return dama;
 		}else if(peca == "Bispo") {
 			Piece bispo = new Bishop(cor);
-	        board.setPeca(linha, coluna, bispo);
+	        return bispo;
 		}else if(peca == "Cavalo") {
 			Piece cavalo = new Horse(cor);
-	        board.setPeca(linha, coluna, cavalo);
+	        return cavalo;
 		}else if(peca == "Torre") {
 			Piece torre = new Rook(cor);
-	        board.setPeca(linha, coluna, torre);
+	        return torre;
 		}
+		return null;
 	}
 	
 }

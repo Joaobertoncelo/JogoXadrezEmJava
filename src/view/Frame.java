@@ -19,7 +19,7 @@ import model.*;
 
 public class Frame extends JFrame implements ActionListener 
 {
-	private final JButton[] botoes; 
+	public final JButton[] botoes; 
 	private final JLabel WKing;
 	private final JLabel WQueen;
 	private final JLabel WRook;
@@ -175,7 +175,7 @@ public class Frame extends JFrame implements ActionListener
                 secondClick[1] = column;
                 control.setSecondClick(row, column);
                 
-                control.processClicks();
+                control.processClicks(botoes);              
                 control.updateBoard(botoes);
 
                 // Resetar as coordenadas dos cliques
@@ -198,8 +198,13 @@ public class Frame extends JFrame implements ActionListener
                 JOptionPane.PLAIN_MESSAGE,
                 null, possibilities,
                 "ham");
-		System.out.println(s);
 		return s;
+	}
+	
+	public static void gameOver() {
+		Frame frame = new Frame(); 
+		JOptionPane.showMessageDialog(frame,
+			    "Game Over.");
 	}
 	 
 	public static void main(String[] args)
